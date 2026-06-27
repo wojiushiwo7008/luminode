@@ -1,7 +1,8 @@
 # ===== 凭证 / 密钥 (CRITICAL - 任何一行漏掉都会泄密) =====
 **/.env
+**/.env.*
 **/.env.local
-**/.env.*.local
+**/.env.example
 **/secrets/
 **/credentials/
 **/aliyun_creds.h
@@ -65,6 +66,10 @@ iot/scripts/env.sh
 iot/scripts/env.sh.bak
 iot/firmware-ch32/aliyun_creds.h
 iot/tmp/
+
+# ===== 临时草稿 / 散件上传(本地保留,不入仓) =====
+scraps/
+uploads/
 
 # ===== 当前根目录散落的运维脚本(含代理地址/本机信息) =====
 restart_check.ps1

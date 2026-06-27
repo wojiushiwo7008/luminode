@@ -16,7 +16,7 @@
 
 ```
 luminode/
-├─ 智慧路灯/              # CH32V307 + FreeRTOS + AIR724UG 4G 模组固件(主)
+├─ firmware/              # CH32V307 + FreeRTOS + AIR724UG 4G 模组固件
 │  ├─ User/               # main.c / freertos_demo.c — 传感器采集 + JSON 解析 + 下行执行
 │  ├─ Drivers/BSP/        # AIR724UG AT 驱动(MQTT)、传感器驱动(DHT11/MQ2/PM2.5/光照)
 │  └─ Middlewares/        # FreeRTOS 内核 + cJSON
@@ -33,12 +33,15 @@ luminode/
 ├─ luminode-app/          # React Native (Expo) 移动 / Kiosk 控制面板
 │  └─ src/                # 设备卡片 / 实时遥测 / 远程控制
 │
-├─ assets/                # 设计系统:logo / 30+ 自定义 1.5px 线性图标 / 参考图
-├─ ui_kits/               # 两个 UI Kit:device-panel(移动) + operator-dashboard(Web)
-├─ preview/               # 设计系统概念卡片(HTML 预览)
-├─ colors_and_type.css    # 全部设计 token(颜色 / 字体 / 间距 / 阴影 / 动效)
-├─ design-canvas.jsx      # 设计系统画布(可视化全部 token)
-└─ SKILL.md               # Claude Code agent-skill manifest
+└─ design-system/         # 品牌 + UI Kit + 设计 token
+   ├─ colors_and_type.css # 全部设计 token(颜色 / 字体 / 间距 / 阴影 / 动效)
+   ├─ design-canvas.jsx   # 设计系统画布(可视化全部 token)
+   ├─ design_canvas.html  # 浏览器入口
+   ├─ assets/             # logo / 30+ 自定义 1.5px 线性图标 / 参考图
+   ├─ fonts/              # 字体替换说明
+   ├─ preview/            # 设计系统概念卡片(HTML 预览)
+   ├─ ui_kits/            # device-panel(移动) + operator-dashboard(Web)
+   └─ SKILL.md            # Claude Code agent-skill manifest
 ```
 
 ---
@@ -74,11 +77,11 @@ luminode-backend  ──►  SQLite (telemetry_latest)
 
 | 目录 | 角色 | 入门 |
 |---|---|---|
-| [`智慧路灯/`](智慧路灯/) | MCU 固件 | MounRiver Studio 打开 `Projects/`,build & flash |
+| [`firmware/`](firmware/) | MCU 固件 | MounRiver Studio 打开 `Projects/`,build & flash |
 | [`iot/`](iot/README.md) | 云端接入 | `cd iot/scripts && cp env.example.sh env.sh && ./setup-aliyun.sh` |
 | [`luminode-backend/`](luminode-backend/README.md) | API 网关 | `cd luminode-backend && cp .env.example .env && npm install && npm run dev` |
 | [`luminode-app/`](luminode-app/) | 移动端 | `cd luminode-app && npm install && npx expo start` |
-| `ui_kits/`、`preview/`、`colors_and_type.css` | 设计系统 | 浏览器打开 `design_canvas.html` |
+| [`design-system/`](design-system/) | 设计系统 | 浏览器打开 `design-system/design_canvas.html` |
 
 每个子项目内含独立 README,包含完整的安装、配置、排错。
 
@@ -87,7 +90,7 @@ luminode-backend  ──►  SQLite (telemetry_latest)
 ## 设计系统
 
 设计系统是从零搭起来的(用户未提供 codebase / Figma / 品牌),
-仅基于一张参考截图(`assets/reference/user-mobile-ui.jpg`)和一句话
+仅基于一张参考截图(`design-system/assets/reference/user-mobile-ui.jpg`)和一句话
 "智慧路灯,接入云平台读取和控制硬件设备"。
 
 **关键词:** Calm · Civic · Technical · Bilingual(CN 主 / EN 等位)
@@ -99,8 +102,8 @@ luminode-backend  ──►  SQLite (telemetry_latest)
 - 字体三件套:Inter(拉丁) + Noto Sans SC(中文) + JetBrains Mono(数值)
 - 4px 基准网格,卡片 14px 圆角,极淡阴影,**不使用毛玻璃 / 紫蓝渐变 / 霓虹**
 
-完整规范见 `colors_and_type.css` 顶部的 token 注释,
-以及 `ui_kits/` 下两个 UI Kit 的活样例。
+完整规范见 `design-system/colors_and_type.css` 顶部的 token 注释,
+以及 `design-system/ui_kits/` 下两个 UI Kit 的活样例。
 
 ---
 
@@ -109,7 +112,7 @@ luminode-backend  ──►  SQLite (telemetry_latest)
 | 模块 | 状态 |
 |---|---|
 | 设计系统 | ✅ 完成(token / 30+ 图标 / 2 套 UI Kit) |
-| 固件 (`智慧路灯/`) | ✅ 跑通,当前接 OneNET。**Phase B 阿里云移植待动工**(预计净改 ~150 行,4 处文件) |
+| 固件 (`firmware/`) | ✅ 跑通,当前接 OneNET。**Phase B 阿里云移植待动工**(预计净改 ~150 行,4 处文件) |
 | 阿里云 IoT Phase A | ✅ 云端 + 模拟设备验证通过 |
 | `luminode-backend` | ✅ AMQP 订阅 + REST + SQLite |
 | `luminode-app` | ✅ 设备列表 + 遥测 + 控制下发 |
@@ -135,4 +138,4 @@ luminode-backend  ──►  SQLite (telemetry_latest)
 
 ## License
 
-未定。课设 / 个人作品,如需复用请先 issue 联系。
+[MIT](LICENSE) © 2026 wojiushiwo7008
