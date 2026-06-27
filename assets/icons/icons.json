@@ -1,0 +1,41 @@
+{
+  "stroke-width": 1.5,
+  "viewBox": "0 0 24 24",
+  "color": "currentColor",
+  "domain": [
+    {"name": "streetlight", "label": "路灯 / Streetlight", "file": "streetlight.svg"},
+    {"name": "streetlight-on", "label": "亮灯 / Streetlight (on)", "file": "streetlight-on.svg"},
+    {"name": "sensor", "label": "传感器 / Sensor", "file": "sensor.svg"},
+    {"name": "temperature", "label": "温度 / Temperature", "file": "temperature.svg"},
+    {"name": "humidity", "label": "湿度 / Humidity", "file": "humidity.svg"},
+    {"name": "air-quality", "label": "空气质量 / PM2.5", "file": "air-quality.svg"},
+    {"name": "fan", "label": "风扇 / Fan", "file": "fan.svg"},
+    {"name": "sprayer", "label": "喷雾器 / Sprayer", "file": "sprayer.svg"},
+    {"name": "water-pump", "label": "抽水泵 / Water pump", "file": "water-pump.svg"},
+    {"name": "wind", "label": "风级 / Wind", "file": "wind.svg"},
+    {"name": "energy", "label": "电量 / Energy", "file": "energy.svg"},
+    {"name": "grid", "label": "电网 / Grid", "file": "grid.svg"},
+    {"name": "signal", "label": "信号 / Signal", "file": "signal.svg"},
+    {"name": "wifi", "label": "网络 / Wi-Fi", "file": "wifi.svg"}
+  ],
+  "ui": [
+    {"name": "dashboard", "file": "dashboard.svg"},
+    {"name": "chart", "file": "chart.svg"},
+    {"name": "alert", "file": "alert.svg"},
+    {"name": "map-pin", "file": "map-pin.svg"},
+    {"name": "clock", "file": "clock.svg"},
+    {"name": "calendar", "file": "calendar.svg"},
+    {"name": "user", "file": "user.svg"},
+    {"name": "settings", "file": "settings.svg"},
+    {"name": "search", "file": "search.svg"},
+    {"name": "filter", "file": "filter.svg"},
+    {"name": "edit", "file": "edit.svg"},
+    {"name": "external", "file": "external.svg"},
+    {"name": "download", "file": "download.svg"},
+    {"name": "check", "file": "check.svg"},
+    {"name": "close", "file": "close.svg"},
+    {"name": "plus", "file": "plus.svg"},
+    {"name": "more", "file": "more.svg"},
+    {"name": "arrow-right", "file": "arrow-right.svg"}
+  ]
+}

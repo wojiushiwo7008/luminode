@@ -1,0 +1,12 @@
+# 凭证 / 密钥 / 三元组
+scripts/env.sh
+scripts/env.sh.bak
+firmware-ch32/aliyun_creds.h
+
+# Python 缓存
+**/__pycache__/
+**/*.pyc
+
+# 临时
+**/*.tmp
+**/.DS_Store

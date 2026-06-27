@@ -1,0 +1,26 @@
+{
+  "comment": "真实设备元数据(物模型里没有的字段)。坐标用 normalized 0~1 viewBox 比例,MapScreen 直接乘到画布上。",
+  "devices": [
+    {
+      "deviceName": "lamp-A24",
+      "displayName": "路灯 A24",
+      "block": "Q-12 中",
+      "emoji": "🏮",
+      "kind": "lamp",
+      "coord": {
+        "x": 0.42,
+        "y": 0.36
+      }
+    }
+  ],
+  "alerts": {
+    "offlineSec": 30,
+    "tempHi": 36,
+    "humiLo": 20,
+    "humiHi": 90,
+    "windHi": 6,
+    "pm25Hi": 150,
+    "pwqOnAsLeak": true,
+    "csbOnAsHazard": true
+  }
+}

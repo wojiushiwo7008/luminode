@@ -1,0 +1,79 @@
+# ===== 凭证 / 密钥 (CRITICAL - 任何一行漏掉都会泄密) =====
+**/.env
+**/.env.local
+**/.env.*.local
+**/secrets/
+**/credentials/
+**/aliyun_creds.h
+**/scripts/env.sh
+**/scripts/env.sh.bak
+*.pem
+*.key
+*.p12
+*.pfx
+config.yaml
+clash_config.yaml
+
+# ===== 依赖 / 构建产物 =====
+**/node_modules/
+**/dist/
+**/build/
+**/.next/
+**/.expo/
+**/.expo-shared/
+**/coverage/
+
+# ===== 大文件 / 二进制 =====
+*.apk
+*.exe
+*.dll
+*.so
+*.dylib
+*.dmg
+*.iso
+*.zip
+*.tar.gz
+*.7z
+
+# ===== 数据 / 日志 / 临时 =====
+**/data/*.db
+**/data/*.sqlite
+**/data/*.sqlite3
+**/*.log
+**/logs/
+**/tmp/
+**/.cache/
+geodata/
+
+# ===== IDE / OS =====
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Python =====
+**/__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ===== iot 子项目额外保护 =====
+iot/scripts/env.sh
+iot/scripts/env.sh.bak
+iot/firmware-ch32/aliyun_creds.h
+iot/tmp/
+
+# ===== 当前根目录散落的运维脚本(含代理地址/本机信息) =====
+restart_check.ps1
+start_mihomo.ps1
+install_mihomo.ps1
+fetch_config.ps1
+fetch_config_v2.ps1
+fix_setup.ps1
+full_setup.ps1
+download_geo.ps1
+mihomo.exe
+mihomo*/

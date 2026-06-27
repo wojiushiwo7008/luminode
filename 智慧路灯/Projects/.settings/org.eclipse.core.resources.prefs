@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//Drivers/BSP/ADC/adc.c=UTF-8
+encoding//Drivers/BSP/AIR724UG/AIR724UG.c=UTF-8
+encoding//Drivers/BSP/IIC/bsp_iic.c=UTF-8
+encoding//Drivers/BSP/IIC/bsp_iic.h=UTF-8
+encoding//User/freertos_demo.c=UTF-8
+encoding//User/main.c=UTF-8

@@ -1,0 +1,44 @@
+{
+  "name": "luminode-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Luminode IoT backend: Aliyun AMQP consumer + REST API for App",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec \"ts-node src/index.ts\"",
+    "build": "tsc -p .",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p . --noEmit",
+    "pack": "pkg . --output luminode-backend.exe"
+  },
+  "bin": "dist/index.js",
+  "pkg": {
+    "targets": ["node22-win-x64"],
+    "assets": [
+      "node_modules/better-sqlite3/build/Release/better_sqlite3.node",
+      "dist/**/*.sql"
+    ],
+    "scripts": [
+      "dist/**/*.js"
+    ]
+  },
+  "dependencies": {
+    "@alicloud/iot20180120": "^3.0.1",
+    "@alicloud/openapi-client": "^0.4.12",
+    "better-sqlite3": "^11.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "rhea": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.7.4",
+    "@yao-pkg/pkg": "^6.20.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
+}

@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Components · Input & Select</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field-label { font-size: 11.5px; color: var(--fg-2); font-weight: 500; }
+.input { padding: 9px 12px; border: 1px solid var(--border-strong); border-radius: 10px; background: var(--bg-elevated); font-size: 13px; font-family: inherit; color: var(--fg-1); width: 200px; }
+.input:focus { outline: none; border-color: var(--brand-civic); box-shadow: 0 0 0 3px rgba(30,64,175,0.20); }
+.input.with-icon { padding-left: 32px; background-image: url('../assets/icons/search.svg'); background-repeat: no-repeat; background-position: 10px center; background-size: 14px; }
+.select-arrow { background-image: url('../assets/icons/arrow-right.svg'); background-repeat: no-repeat; background-position: right 10px center; background-size: 12px; transform: rotate(90deg); display: inline-block; }
+</style></head>
+<body><div class="card">
+  <div class="label">Input · select · search</div>
+  <div class="row" style="gap: 16px;">
+    <div class="field">
+      <span class="field-label">设备 ID · Device ID</span>
+      <input class="input" value="lamp/A24" />
+    </div>
+    <div class="field">
+      <span class="field-label">街区 · Block</span>
+      <input class="input" value="Q-12 · West" style="border-color: var(--brand-civic); box-shadow: 0 0 0 3px rgba(30,64,175,0.20);" />
+    </div>
+    <div class="field">
+      <span class="field-label">搜索 · Search</span>
+      <input class="input with-icon" placeholder="搜设备、街区…" />
+    </div>
+  </div>
+</div></body></html>

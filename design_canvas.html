@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8" />
+<title>Luminode · 设计画布</title>
+<link rel="stylesheet" href="colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: var(--bg-sunken); font-family: var(--font-sans); color: var(--fg-1); overflow: hidden; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+// Frame helper — embeds a project HTML file inside an artboard
+const Frame = ({ src }) => (
+  <iframe
+    src={src}
+    style={{ width: '100%', height: '100%', border: 0, background: 'var(--bg)', display: 'block' }}
+    loading="lazy"
+  />
+);
+
+// Compact preview-card frame (for design system tiles)
+const Card = ({ src }) => (
+  <iframe src={src} style={{ width: '100%', height: '100%', border: 0, display: 'block', background: '#fff' }} loading="lazy" />
+);
+
+const App = () => (
+  <DesignCanvas title="Luminode 智慧路灯 · 设计系统">
+
+    <DCSection id="kits" title="UI Kits · 已组装的界面">
+      <DCArtboard id="device" label="设备控制面板 · iPhone 14" width={390} height={844}>
+        <Frame src="ui_kits/device-panel/index.html" />
+      </DCArtboard>
+      <DCArtboard id="operator" label="城市指挥中心 · 1440 × 900" width={1440} height={900}>
+        <Frame src="ui_kits/operator-dashboard/index.html" />
+      </DCArtboard>
+    </DCSection>
+
+    <DCSection id="brand" title="Brand · 品牌">
+      <DCArtboard id="logo" label="标志锁定" width={640} height={420}>
+        <Card src="preview/01-brand-logo.html" />
+      </DCArtboard>
+      <DCArtboard id="voice" label="语态 · Voice" width={640} height={420}>
+        <Card src="preview/19-brand-voice.html" />
+      </DCArtboard>
+    </DCSection>
+
+    <DCSection id="color" title="Color · 色彩">
+      <DCArtboard id="c-brand" label="品牌色" width={640} height={420}>
+        <Card src="preview/02-colors-brand.html" />
+      </DCArtboard>
+      <DCArtboard id="c-neutral" label="中性色" width={640} height={420}>
+        <Card src="preview/03-colors-neutrals.html" />
+      </DCArtboard>
+      <DCArtboard id="c-status" label="状态色" width={640} height={420}>
+        <Card src="preview/04-colors-status.html" />
+      </DCArtboard>
+      <DCArtboard id="c-dataviz" label="数据可视化色板" width={640} height={420}>
+        <Card src="preview/05-colors-dataviz.html" />
+      </DCArtboard>
+    </DCSection>
+
+    <DCSection id="type" title="Type · 字体">
+      <DCArtboard id="t-display" label="标题字号 · Display" width={640} height={420}>
+        <Card src="preview/06-type-display.html" />
+      </DCArtboard>
+      <DCArtboard id="t-body" label="正文字号 · Body" width={640} height={420}>
+        <Card src="preview/07-type-body.html" />
+      </DCArtboard>
+      <DCArtboard id="t-mono" label="等宽数字 · Mono" width={640} height={420}>
+        <Card src="preview/08-type-mono.html" />
+      </DCArtboard>
+    </DCSection>
+
+    <DCSection id="space" title="Spacing · 间距 / 圆角 / 阴影">
+      <DCArtboard id="s-grid" label="栅格 + 间距尺度" width={640} height={420}>
+        <Card src="preview/09-spacing-grid.html" />
+      </DCArtboard>
+      <DCArtboard id="s-radii" label="圆角" width={640} height={420}>
+        <Card src="preview/10-spacing-radii.html" />
+      </DCArtboard>
+      <DCArtboard id="s-shadow" label="阴影 · 高度" width={640} height={420}>
+        <Card src="preview/11-spacing-shadows.html" />
+      </DCArtboard>
+    </DCSection>
+
+    <DCSection id="icons" title="Icons · 图标">
+      <DCArtboard id="i-domain" label="领域图标 · 路灯 / 传感 / 控制" width={640} height={420}>
+        <Card src="preview/12-icons-domain.html" />
+      </DCArtboard>
+      <DCArtboard id="i-ui" label="界面图标" width={640} height={420}>
+        <Card src="preview/13-icons-ui.html" />
+      </DCArtboard>
+    </DCSection>
+
+    <DCSection id="components" title="Components · 组件">
+      <DCArtboard id="cmp-btn" label="按钮 · Buttons" width={640} height={420}>
+        <Card src="preview/14-components-buttons.html" />
+      </DCArtboard>
+      <DCArtboard id="cmp-toggle" label="开关 · Toggles" width={640} height={420}>
+        <Card src="preview/15-components-toggle.html" />
+      </DCArtboard>
+      <DCArtboard id="cmp-input" label="输入框 / 滑杆" width={640} height={420}>
+        <Card src="preview/16-components-input.html" />
+      </DCArtboard>
+      <DCArtboard id="cmp-badge" label="徽章 · Badges" width={640} height={420}>
+        <Card src="preview/17-components-badges.html" />
+      </DCArtboard>
+      <DCArtboard id="cmp-card" label="卡片 · Card" width={640} height={420}>
+        <Card src="preview/18-components-card.html" />
+      </DCArtboard>
+    </DCSection>
+
+  </DesignCanvas>
+);
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

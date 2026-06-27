@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Luminode 运营商",
+    "slug": "luminode-operator",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#14B8A6"
+    },
+    "android": {
+      "package": "com.luminode.operator"
+    },
+    "platforms": ["android"]
+  }
+}

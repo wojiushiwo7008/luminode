@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Components · Badges</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 500; }
+.dot { width: 6px; height: 6px; border-radius: 50%; }
+.chip-online { background: #D1FAE5; color: #065F46; }
+.chip-warn { background: #FEF3C7; color: #92400E; }
+.chip-alarm { background: #FEE2E2; color: #991B1B; }
+.chip-info { background: #DBEAFE; color: #1E3A8A; }
+.chip-maint { background: #EDE9FE; color: #5B21B6; }
+.chip-offline { background: #E2E8F0; color: #475569; }
+</style></head>
+<body><div class="card">
+  <div class="label">Status badges &amp; chips</div>
+  <div class="row">
+    <span class="chip chip-online"><span class="dot" style="background:#10B981;"></span>在线 · Online</span>
+    <span class="chip chip-warn"><span class="dot" style="background:#F59E0B;"></span>降级 · Degraded</span>
+    <span class="chip chip-alarm"><span class="dot" style="background:#EF4444;"></span>故障 · Fault</span>
+    <span class="chip chip-info"><span class="dot" style="background:#3B82F6;"></span>调度中</span>
+    <span class="chip chip-maint"><span class="dot" style="background:#8B5CF6;"></span>维护 · Maint.</span>
+    <span class="chip chip-offline"><span class="dot" style="background:#94A3B8;"></span>离线 · Offline</span>
+  </div>
+  <div class="row">
+    <span class="chip" style="background: var(--brand-night); color: #5EEAD4;">v2.4.1</span>
+    <span class="chip" style="background: var(--brand-glow); color: #052E2A;">PRIMARY</span>
+    <span class="chip" style="background: var(--bg-elevated); border: 1px solid var(--border-strong); color: var(--fg-1);">Outlined</span>
+  </div>
+</div></body></html>

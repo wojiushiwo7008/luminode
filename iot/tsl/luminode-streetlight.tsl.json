@@ -1,0 +1,180 @@
+{
+  "schema": "https://iotx-tsl.oss-ap-southeast-1.aliyuncs.com/schema.json",
+  "profile": {
+    "version": "1.0",
+    "productKey": "${PRODUCT_KEY}"
+  },
+  "properties": [
+    {
+      "identifier": "led",
+      "name": "路灯开关",
+      "accessMode": "rw",
+      "required": true,
+      "desc": "PD13 输出。固件中 led_state 维护。",
+      "dataType": {
+        "type": "bool",
+        "specs": { "0": "关闭", "1": "开启" }
+      }
+    },
+    {
+      "identifier": "pwq",
+      "name": "喷雾器开关",
+      "accessMode": "rw",
+      "required": true,
+      "desc": "PD12 输出。PM2.5 > 75 时本地联动自动开。",
+      "dataType": {
+        "type": "bool",
+        "specs": { "0": "关闭", "1": "开启" }
+      }
+    },
+    {
+      "identifier": "csb",
+      "name": "抽水泵",
+      "accessMode": "rw",
+      "required": true,
+      "desc": "PD14 输出。控制路灯底座抽水泵,可联动喷雾或灌溉。identifier 保留 csb(拼音首字母与原超声波重合),不改以避免固件变更。",
+      "dataType": {
+        "type": "bool",
+        "specs": { "0": "关闭", "1": "开启" }
+      }
+    },
+    {
+      "identifier": "temp",
+      "name": "温度",
+      "accessMode": "r",
+      "required": true,
+      "desc": "AHT20 采集,整数 °C。",
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "-40",
+          "max": "100",
+          "step": "1",
+          "unit": "°C",
+          "unitName": "摄氏度"
+        }
+      }
+    },
+    {
+      "identifier": "humi",
+      "name": "湿度",
+      "accessMode": "r",
+      "required": true,
+      "desc": "AHT20 采集,百分比。",
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "100",
+          "step": "1",
+          "unit": "%",
+          "unitName": "百分比"
+        }
+      }
+    },
+    {
+      "identifier": "wind",
+      "name": "风速等级",
+      "accessMode": "r",
+      "required": true,
+      "desc": "PC2 ADC 分桶后的 0-10 等级。",
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "10",
+          "step": "1",
+          "unit": "级",
+          "unitName": "蒲福风级近似"
+        }
+      }
+    },
+    {
+      "identifier": "MQ2",
+      "name": "空气质量等级",
+      "accessMode": "r",
+      "required": false,
+      "desc": "由 DC01 PM2.5 浓度映射出的 0-10 等级(0=优, 10=严重)。沿用旧字段名以兼容固件。",
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "10",
+          "step": "2",
+          "unit": "级",
+          "unitName": "国标 PM2.5 等级桶"
+        }
+      }
+    },
+    {
+      "identifier": "PM25",
+      "name": "PM2.5 浓度",
+      "accessMode": "r",
+      "required": true,
+      "desc": "DC01 红外 PM2.5 原始 μg/m³,固件侧截断到 0-100。沿用旧字段名(大写敏感)。",
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "100",
+          "step": "1",
+          "unit": "μg/m³",
+          "unitName": "微克每立方米"
+        }
+      }
+    },
+    {
+      "identifier": "rain_adc",
+      "name": "雨滴 ADC",
+      "accessMode": "r",
+      "required": false,
+      "desc": "PA3 雨滴模拟量原始 ADC(值越小越湿)。预留字段,固件 shuju1 当前未上报,可后续启用。",
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "4095",
+          "step": "1",
+          "unit": "",
+          "unitName": "原始 ADC"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "identifier": "offline_alarm",
+      "name": "设备离线告警",
+      "type": "alert",
+      "required": false,
+      "desc": "AIR724UG 检测到 LTE 掉线或 MQTT 断开时由平台侧规则引擎触发(非设备主动 post)。",
+      "outputData": [
+        {
+          "identifier": "lastSeen",
+          "name": "最后通讯",
+          "dataType": { "type": "date", "specs": {} }
+        }
+      ],
+      "method": "thing.event.offline_alarm.post"
+    },
+    {
+      "identifier": "pm25_high",
+      "name": "PM2.5 超阈值",
+      "type": "alert",
+      "required": false,
+      "desc": "PM2.5 > 75 μg/m³ 持续 1 分钟,云端规则引擎告警(可推送 APP)。",
+      "outputData": [
+        {
+          "identifier": "pm25_value",
+          "name": "当前浓度",
+          "dataType": {
+            "type": "int",
+            "specs": { "min": "0", "max": "500", "unit": "μg/m³" }
+          }
+        }
+      ],
+      "method": "thing.event.pm25_high.post"
+    }
+  ],
+  "services": []
+}
